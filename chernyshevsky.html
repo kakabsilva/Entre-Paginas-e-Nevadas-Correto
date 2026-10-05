@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nikolai Chernyshevsky — Entre Páginas e Nevadas</title>
+<meta name="description" content="Biografia, contexto histórico e obras de Nikolai Chernyshevsky, autor de O Que Fazer?">
+<style>
+/* =========================================================
+   ENTRE PÁGINAS E NEVADAS — Vozes da Literatura Russa
+   Folha de estilos principal
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600&display=swap');
+
+:root{
+  /* ---- Paleta ---- */
+  --paper:        #FBF7F1;   /* fundo principal — papel antigo claro */
+  --paper-alt:     #F6EFE6;   /* fundo secundário — papel envelhecido */
+  --purple:        #B7A3D6;   /* roxo pastel — cor predominante */
+  --purple-deep:    #6E5C93;   /* roxo profundo — títulos, texto de destaque */
+  --purple-ink:     #443A5C;   /* quase-tinta roxa — corpo de texto */
+  --pink:          #F2D9E4;   /* rosa pastel — elementos secundários */
+  --pink-deep:      #D998B4;   /* rosa mais saturado — pequenos acentos */
+  --blue:          #AFC9E8;   /* azul — detalhes e interação */
+  --blue-deep:      #6E8FBE;   /* azul mais forte — links, hover */
+  --red:           #B23A3A;   /* vermelho — destaques importantes */
+  --white:         #FFFFFF;
+  --ink-soft:       #6b6178;   /* texto secundário */
+  --line:          rgba(110, 92, 147, 0.18);
+
+  --font-display:   'Playfair Display', Georgia, serif;
+  --font-body:      'Lora', Georgia, serif;
+  --font-hand:      'Caveat', cursive;
+
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+
+  --shadow-soft: 0 10px 30px rgba(110, 92, 147, 0.14);
+  --shadow-page: 0 18px 45px rgba(68, 58, 92, 0.22);
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--purple-ink);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* textura de papel sutil no fundo */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(rgba(110,92,147,0.05) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: .5;
+}
+
+img{ max-width: 100%; display: block; }
+a{ color: inherit; text-decoration: none; }
+ul{ margin:0; padding:0; list-style:none; }
+button{ font-family: inherit; cursor: pointer; }
+
+h1, h2, h3, h4{
+  font-family: var(--font-display);
+  color: var(--purple-deep);
+  margin: 0 0 .5em;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+.eyebrow{
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--pink-deep);
+  display: block;
+  margin-bottom: .2em;
+}
+
+p{ margin: 0 0 1em; }
+
+.container{
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+section{ position: relative; z-index: 1; }
+
+/* =========================================================
+   Flocos de neve discretos (ambientais)
+   ========================================================= */
+.snowfall{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+.snowfall span{
+  position: absolute;
+  top: -5%;
+  width: 6px;
+  height: 6px;
+  background: var(--white);
+  border-radius: 50%;
+  opacity: .55;
+  animation: fall linear infinite;
+}
+@keyframes fall{
+  to{ transform: translateY(110vh) translateX(10px); }
+}
+@media (prefers-reduced-motion: reduce){
+  .snowfall{ display: none; }
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.navbar{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(251, 247, 241, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.navbar .container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .9rem 0;
+}
+.brand{
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--purple-deep);
+}
+.brand svg{ width: 30px; height: 30px; flex-shrink: 0; }
+.brand small{
+  display: block;
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--pink-deep);
+  font-weight: 500;
+  margin-top: -2px;
+}
+
+.nav-links{
+  display: flex;
+  gap: 1.9rem;
+  align-items: center;
+}
+.nav-links a{
+  font-size: .92rem;
+  letter-spacing: .3px;
+  color: var(--purple-ink);
+  position: relative;
+  padding: .3rem 0;
+  transition: color .25s ease;
+}
+.nav-links a::after{
+  content:"";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background: var(--red);
+  transition: width .3s ease;
+}
+.nav-links a:hover,
+.nav-links a.active{ color: var(--red); }
+.nav-links a:hover::after,
+.nav-links a.active::after{ width: 100%; }
+
+.hamburger{
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 6px;
+}
+.hamburger span{
+  width: 24px; height: 2px;
+  background: var(--purple-deep);
+  border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease;
+}
+.hamburger.is-open span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.hamburger.is-open span:nth-child(2){ opacity: 0; }
+.hamburger.is-open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 860px){
+  .hamburger{ display: inline-flex; }
+  .nav-links{
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .35s ease;
+  }
+  .nav-links.is-open{ max-height: 420px; }
+  .nav-links a{
+    width: 100%;
+    padding: .9rem 6%;
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* =========================================================
+   HERO / CAPA
+   ========================================================= */
+.hero{
+  padding: 4.5rem 0 3rem;
+  text-align: center;
+}
+.hero-title{
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  margin-bottom: .3rem;
+}
+.hero-sub{
+  font-family: var(--font-hand);
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  color: var(--pink-deep);
+  margin-bottom: 1.4rem;
+}
+.hero-intro{
+  max-width: 640px;
+  margin: 0 auto 2.2rem;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+}
+.hero-divider{
+  width: 60px; height: 2px;
+  margin: 0 auto 1.6rem;
+  background: linear-gradient(90deg, var(--pink), var(--purple), var(--blue));
+  border-radius: 4px;
+}
+
+/* =========================================================
+   LIVRO INTERATIVO (Home)
+   ========================================================= */
+.book-stage{
+  perspective: 2400px;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0 4rem;
+}
+.book{
+  position: relative;
+  width: min(880px, 92vw);
+  aspect-ratio: 16 / 10;
+  display: flex;
+}
+.book-base{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-page);
+  background: var(--white);
+}
+.book-half{
+  flex: 1;
+  position: relative;
+  padding: 2.1rem 2rem;
+  background: linear-gradient(155deg, #fffdf9, #f8f1e8 85%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.book-half.left{ border-right: 1px solid var(--line); }
+.book-half h3{
+  font-size: 1.15rem;
+  margin-bottom: .5rem;
+}
+.book-half p{
+  font-size: .92rem;
+  color: var(--ink-soft);
+  margin-bottom: .9rem;
+}
+.book-half .page-label{
+  font-family: var(--font-hand);
+  color: var(--pink-deep);
+  font-size: 1.05rem;
+}
+.book-half .open-btn{
+  align-self: flex-start;
+  margin-top: .3rem;
+  border: 1px solid var(--purple);
+  background: transparent;
+  color: var(--purple-deep);
+  padding: .5rem 1.1rem;
+  border-radius: 999px;
+  font-size: .82rem;
+  letter-spacing: .3px;
+  transition: background .25s ease, color .25s ease, transform .2s ease;
+}
+.book-half .open-btn:hover{
+  background: var(--purple);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+.book-spine{
+  position: absolute;
+  left: 50%; top: 0; bottom: 0;
+  width: 14px;
+  margin-left: -7px;
+  background: linear-gradient(90deg, rgba(110,92,147,.18), rgba(110,92,147,.05), rgba(110,92,147,.18));
+  z-index: 2;
+}
+.book-corner{
+  position: absolute;
+  width: 46px; height: 46px;
+  opacity: .5;
+}
+.book-corner.tl{ top: 10px; left: 10px; }
+.book-corner.br{ bottom: 10px; right: 10px; transform: rotate(180deg); }
+
+/* página que "vira" ao clicar (leaf) */
+.leaf{
+  position: absolute;
+  top: 0; right: 0;
+  width: 50%; height: 100%;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform .9s cubic-bezier(.61,.09,.36,1);
+  z-index: 3;
+  cursor: pointer;
+}
+.leaf-face{
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  padding: 2.1rem 2rem;
+  background: linear-gradient(155deg, #fffdf9, #f3e9dd 85%);
+  border-left: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.leaf-face.back{
+  transform: rotateY(180deg);
+}
+.book.flip-right .leaf{ transform: rotateY(-178deg); }
+
+.book-hint{
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  margin-top: -2.4rem;
+  margin-bottom: 2.5rem;
+}
+
+/* =========================================================
+   BOTÕES GERAIS
+   ========================================================= */
+.btn{
+  display: inline-block;
+  border-radius: 999px;
+  padding: .65rem 1.4rem;
+  font-size: .88rem;
+  letter-spacing: .3px;
+  border: 1px solid var(--purple);
+  color: var(--purple-deep);
+  background: var(--white);
+  transition: all .25s ease;
+}
+.btn:hover{ background: var(--purple); color: var(--white); transform: translateY(-2px); }
+.btn.primary{ background: var(--purple); color: var(--white); }
+.btn.primary:hover{ background: var(--purple-deep); }
+
+/* =========================================================
+   SEÇÕES GERAIS DE CONTEÚDO
+   ========================================================= */
+.section{
+  padding: 3.5rem 0;
+}
+.section-alt{ background: var(--paper-alt); }
+.section-title{
+  text-align: center;
+  margin-bottom: 2.3rem;
+}
+.section-title h2{ font-size: clamp(1.6rem, 3.4vw, 2.2rem); }
+.section-title .eyebrow{ text-align: center; }
+
+/* =========================================================
+   PÁGINA DE AUTOR
+   ========================================================= */
+.author-hero{
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2.6rem;
+  align-items: center;
+  padding: 3rem 0 2rem;
+}
+.portrait-frame{
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  background: linear-gradient(160deg, var(--purple), var(--pink));
+  box-shadow: var(--shadow-soft);
+}
+.portrait-frame .inner{
+  border-radius: calc(var(--radius-lg) - 8px);
+  overflow: hidden;
+  background: var(--white);
+  aspect-ratio: 3/4;
+}
+.author-meta{ }
+.author-meta h1{ font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: .2rem; }
+.author-dates{
+  font-family: var(--font-hand);
+  color: var(--pink-deep);
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.author-tags{
+  display: flex; flex-wrap: wrap; gap: .5rem;
+  margin-bottom: 1.1rem;
+}
+.tag{
+  font-size: .74rem;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  padding: .32rem .8rem;
+  border-radius: 999px;
+  background: var(--pink);
+  color: var(--purple-deep);
+}
+.tag.blue{ background: var(--blue); color: #2c4361; }
+
+.info-grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem 2rem;
+  margin: 2.5rem 0;
+}
+.info-block h4{
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  color: var(--blue-deep);
+  margin-bottom: .4rem;
+}
+.info-block p{ color: var(--ink-soft); font-size: .96rem; margin-bottom:0; }
+
+.curio{
+  margin-top: 2.2rem;
+  padding: 1.6rem 1.8rem;
+  border-left: 3px solid var(--red);
+  background: var(--white);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  box-shadow: var(--shadow-soft);
+  position: relative;
+}
+.curio::before{
+  content: "✧ curiosidade";
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  color: var(--red);
+  display: block;
+  margin-bottom: .4rem;
+}
+
+/* =========================================================
+   CARDS DE OBRAS (cartão de livro)
+   ========================================================= */
+.works-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+.work-card{
+  perspective: 1600px;
+  height: 300px;
+}
+.work-card-inner{
+  position: relative;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .8s cubic-bezier(.61,.09,.36,1);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+.work-card.is-open .work-card-inner{ transform: rotateY(-180deg); }
+
+.work-face{
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+}
+.work-face.cover{
+  background: linear-gradient(160deg, var(--purple) 0%, #cdb9e8 55%, var(--pink) 100%);
+  color: var(--white);
+  justify-content: space-between;
+  cursor: pointer;
+}
+.work-face.cover .genre{
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  opacity: .85;
+}
+.work-face.cover h3{
+  color: var(--white);
+  font-size: 1.3rem;
+  margin: .6rem 0;
+}
+.work-face.cover .year{
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+}
+.work-face.cover .tap{
+  align-self: flex-end;
+  font-size: .78rem;
+  border: 1px solid rgba(255,255,255,.7);
+  padding: .35rem .8rem;
+  border-radius: 999px;
+}
+.work-face.back{
+  transform: rotateY(180deg);
+  background: linear-gradient(155deg, #fffdf9, #f3e9dd 85%);
+  overflow-y: auto;
+  cursor: pointer;
+}
+.work-face.back h4{
+  font-size: .95rem;
+  color: var(--purple-deep);
+  margin-bottom: .25rem;
+}
+.work-face.back p{
+  font-size: .84rem;
+  color: var(--ink-soft);
+  margin-bottom: .7rem;
+}
+.work-face.back .excerpt{
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  color: var(--red);
+  border-left: 2px solid var(--red);
+  padding-left: .6rem;
+  margin-top: .3rem;
+}
+.work-face.back .close-hint{
+  font-size: .72rem;
+  color: var(--purple);
+  text-align: right;
+}
+
+/* =========================================================
+   TRADUTORAS — cartões de biblioteca
+   ========================================================= */
+.translators-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.6rem;
+}
+.lib-card{
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 1.4rem 1.5rem;
+  position: relative;
+  box-shadow: var(--shadow-soft);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.lib-card:hover{ transform: translateY(-4px); box-shadow: 0 20px 40px rgba(68,58,92,.18); }
+.lib-card::before{
+  content:"";
+  position: absolute;
+  top: 0; left: 18px; right: 18px;
+  height: 6px;
+  background: repeating-linear-gradient(90deg, var(--blue) 0 10px, transparent 10px 16px);
+  opacity: .6;
+}
+.lib-card h3{
+  font-size: 1.08rem;
+  margin-bottom: .15rem;
+}
+.lib-card .nation{
+  font-family: var(--font-hand);
+  color: var(--pink-deep);
+  font-size: 1rem;
+  display: block;
+  margin-bottom: .7rem;
+}
+.lib-card dl{
+  margin: 0 0 .8rem;
+}
+.lib-card dt{
+  font-size: .7rem;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--blue-deep);
+  margin-top: .5rem;
+}
+.lib-card dd{
+  margin: 0;
+  font-size: .88rem;
+  color: var(--ink-soft);
+}
+.lib-card p.bio{
+  font-size: .88rem;
+  color: var(--ink-soft);
+  margin-top: .6rem;
+}
+.lib-card .note{
+  margin-top: .8rem;
+  font-size: .78rem;
+  color: var(--purple);
+  font-style: italic;
+}
+
+/* =========================================================
+   SOBRE NÓS
+   ========================================================= */
+.team-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.6rem;
+  max-width: 780px;
+  margin: 0 auto 2.5rem;
+}
+.team-card{
+  background: var(--white);
+  border-radius: var(--radius-md);
+  text-align: center;
+  padding: 2rem 1.2rem;
+  box-shadow: var(--shadow-soft);
+}
+.team-avatar{
+  width: 64px; height: 64px;
+  margin: 0 auto .9rem;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--purple), var(--blue));
+  display: flex; align-items: center; justify-content: center;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+}
+.team-card h3{ font-size: 1.05rem; margin-bottom: .2rem; }
+.team-card .role{
+  font-family: var(--font-hand);
+  color: var(--pink-deep);
+  font-size: .95rem;
+}
+
+.about-project{
+  max-width: 760px;
+  margin: 0 auto;
+}
+.about-project .step{
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: .9rem;
+  margin-bottom: 1.3rem;
+}
+.about-project .dot{
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  margin-top: .5rem;
+  background: var(--red);
+}
+.about-project h4{ font-size: 1rem; margin-bottom: .25rem; }
+.about-project p{ color: var(--ink-soft); font-size: .95rem; }
+
+/* =========================================================
+   FONTES / REFERÊNCIAS
+   ========================================================= */
+.sources{
+  font-size: .82rem;
+  color: var(--ink-soft);
+}
+.sources li{
+  padding: .3rem 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer{
+  background: var(--purple-deep);
+  color: #ece6f5;
+  padding: 3rem 0 1.6rem;
+  margin-top: 2rem;
+}
+footer .foot-grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+footer h4{
+  color: #fff;
+  font-size: .95rem;
+  margin-bottom: .8rem;
+}
+footer .foot-title{
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: #fff;
+  margin-bottom: .3rem;
+}
+footer .foot-tag{
+  font-family: var(--font-hand);
+  color: var(--pink);
+  font-size: 1.05rem;
+}
+footer ul li a{
+  font-size: .88rem;
+  color: #d8cdec;
+  transition: color .2s ease;
+}
+footer ul li a:hover{ color: var(--pink); }
+footer ul li{ margin-bottom: .5rem; }
+.foot-bottom{
+  text-align: center;
+  font-size: .78rem;
+  color: #b6a8d1;
+  border-top: 1px solid rgba(255,255,255,.12);
+  padding-top: 1.2rem;
+}
+
+/* =========================================================
+   MODAL (reservado para uso futuro/acessibilidade de obras)
+   ========================================================= */
+.visually-hidden{
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* foco visível para acessibilidade */
+a:focus-visible,
+button:focus-visible{
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+@media (max-width: 780px){
+  .author-hero{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .portrait-frame{ width: 200px; margin: 0 auto; }
+  .info-grid{ grid-template-columns: 1fr; }
+  .book-half{ padding: 1.4rem 1.2rem; }
+  .book-half p{ display: none; }
+  .leaf-face{ padding: 1.4rem 1.2rem; }
+  .leaf-face p{ font-size: .84rem; }
+}
+
+@media (max-width: 520px){
+  .book{ aspect-ratio: 3/4; }
+  .book-half p{ display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="snowfall" aria-hidden="true"></div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 10c6-3 12-3 18 0v28c-6-3-12-3-18 0V10Z" fill="#B7A3D6"/>
+        <path d="M42 10c-6-3-12-3-18 0v28c6-3 12-3 18 0V10Z" fill="#F2D9E4"/>
+        <path d="M24 10v28" stroke="#6E5C93" stroke-width="1.2"/>
+      </svg>
+      <span>Entre Páginas e Nevadas<small>Vozes da Literatura Russa</small></span>
+    </a>
+    <nav>
+      <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="venevitinov.html">Dmitry Venevitinov</a></li>
+        <li><a href="chernyshevsky.html" class="active">Nikolai Chernyshevsky</a></li>
+        <li><a href="tradutoras.html">Tradutoras</a></li>
+        <li><a href="sobre.html">Sobre Nós</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ CABEÇALHO DO AUTOR ============ -->
+  <section class="container author-hero">
+    <div class="portrait-frame">
+      <div class="inner">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Retrato ilustrativo de Nikolai Chernyshevsky">
+          <rect width="300" height="400" fill="#F6EFE6"/>
+          <path d="M0 400 L0 260 Q150 180 300 260 L300 400 Z" fill="#B23A3A"/>
+          <ellipse cx="150" cy="170" rx="80" ry="94" fill="#EAD9C4"/>
+          <path d="M72 145 Q150 55 228 145 Q228 100 150 88 Q72 100 72 145Z" fill="#2c2530"/>
+          <path d="M100 200 Q150 240 200 200 Q195 230 150 235 Q105 230 100 200Z" fill="#2c2530" opacity=".85"/>
+          <circle cx="122" cy="172" r="5" fill="#443A5C"/>
+          <circle cx="178" cy="172" r="5" fill="#443A5C"/>
+          <rect x="108" y="150" width="30" height="8" rx="4" fill="#3A3040" opacity=".5"/>
+          <rect x="162" y="150" width="30" height="8" rx="4" fill="#3A3040" opacity=".5"/>
+          <path d="M40 380 Q150 320 260 380" stroke="#AFC9E8" stroke-width="2" fill="none" opacity=".6"/>
+        </svg>
+      </div>
+    </div>
+    <div class="author-meta">
+      <span class="eyebrow">página 2 do nosso livro</span>
+      <h1>Nikolai Gavrilovich Chernyshevsky</h1>
+      <span class="author-dates">12 de julho de 1828 — 17 de outubro de 1889 · Saratov</span>
+      <div class="author-tags">
+        <span class="tag">Crítica &amp; jornalismo</span>
+        <span class="tag blue">Pensamento social</span>
+        <span class="tag">Romance realista</span>
+      </div>
+      <p>
+        Filho de um padre ortodoxo, Chernyshevsky tornou-se um dos
+        pensadores mais influentes da Rússia do século XIX — sua obra
+        moldou gerações de intelectuais revolucionários, entre eles Lênin.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ BIOGRAFIA ============ -->
+  <section class="section container">
+    <div class="section-title">
+      <span class="eyebrow">manuscrito biográfico</span>
+      <h2>Da crítica literária à prisão da fortaleza</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-block">
+        <h4>Origem e formação</h4>
+        <p>
+          Nascido em Saratov, filho de um sacerdote, estudou no seminário
+          da cidade, onde aprendeu inglês, francês, alemão, italiano,
+          latim e grego. Formou-se na Universidade de São Petersburgo em
+          1850 e voltou a Saratov para lecionar literatura.
+        </p>
+      </div>
+      <div class="info-block">
+        <h4>Contexto histórico</h4>
+        <p>
+          A partir de 1854 integrou a redação da revista "Sovremennik"
+          ("O Contemporâneo"), tornando-se uma das vozes centrais do
+          movimento democrático-revolucionário dos anos 1860. Foi preso
+          em 1862 e escreveu "O Que Fazer?" durante o cárcere na Fortaleza
+          de Pedro e Paulo, sendo depois exilado à Sibéria até 1883.
+        </p>
+      </div>
+      <div class="info-block">
+        <h4>Características de sua escrita</h4>
+        <p>
+          Defensor do realismo, Chernyshevsky via a arte como um
+          "manual da vida": a literatura deveria refletir e explicar a
+          realidade social para servir ao bem comum, e não existir como
+          um domínio estético isolado.
+        </p>
+      </div>
+      <div class="info-block">
+        <h4>Principais ideias</h4>
+        <p>
+          Defendeu o materialismo, o "egoísmo racional", a emancipação
+          das mulheres e formas cooperativas de organização econômica
+          como caminho para uma sociedade mais igualitária.
+        </p>
+      </div>
+    </div>
+
+    <div class="info-grid" style="margin-top:-1rem;">
+      <div class="info-block">
+        <h4>Importância para a literatura russa</h4>
+        <p>
+          Sua tese de mestrado "Relações Estéticas da Arte com a
+          Realidade" (1855) ajudou a consolidar o realismo como corrente
+          dominante na crítica russa. Karl Marx e Lênin o consideravam
+          um dos maiores pensadores socialistas anteriores ao marxismo.
+        </p>
+      </div>
+    </div>
+
+    <div class="curio">
+      <p>
+        Chernyshevsky escreveu "O Que Fazer?" com autorização das
+        autoridades prisionais — e, por uma ironia da história, o
+        manuscrito passou pela censura e foi publicado em folhetins na
+        própria revista "Sovremennik", tornando-se um dos livros mais
+        influentes do movimento revolucionário russo.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ OBRAS ============ -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow">obras em destaque</span>
+        <h2>Duas páginas do pensamento de Chernyshevsky</h2>
+      </div>
+
+      <div class="works-grid">
+
+        <!-- Obra 1: O Que Fazer? -->
+        <article class="work-card">
+          <div class="work-card-inner">
+            <div class="work-face cover">
+              <span class="genre">Romance · Ficção filosófico-política</span>
+              <div>
+                <h3>O Que Fazer?</h3>
+                <span class="year">1863</span>
+              </div>
+              <span class="tap">toque para abrir ↦</span>
+            </div>
+            <div class="work-face back">
+              <h4>Gênero</h4>
+              <p>Romance utópico e didático, escrito em resposta a "Pais e Filhos", de Turguêniev.</p>
+              <h4>Contexto</h4>
+              <p>
+                Escrito em 1863 enquanto o autor estava preso na Fortaleza
+                de Pedro e Paulo, o romance foi publicado em capítulos na
+                revista "Sovremennik" antes de ser proibido pela censura.
+              </p>
+              <h4>Principais temas</h4>
+              <p>
+                A protagonista Vera Pávlovna busca independência de uma
+                família autoritária e de um casamento arranjado, organizando
+                uma cooperativa de costura. A obra defende a igualdade entre
+                homens e mulheres e formas coletivas de trabalho.
+              </p>
+              <h4>Sinopse</h4>
+              <p class="excerpt">
+                Considerado um dos romances mais influentes da história
+                russa, inspirou gerações de revolucionários — inclusive
+                Lênin, que batizou um de seus próprios panfletos com o
+                mesmo título em homenagem à obra.
+              </p>
+              <p class="close-hint">toque para fechar ↤</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Obra 2 -->
+        <article class="work-card">
+          <div class="work-card-inner">
+            <div class="work-face cover">
+              <span class="genre">Ensaio · Estética</span>
+              <div>
+                <h3>Relações Estéticas da Arte com a Realidade</h3>
+                <span class="year">1855</span>
+              </div>
+              <span class="tap">toque para abrir ↦</span>
+            </div>
+            <div class="work-face back">
+              <h4>Gênero</h4>
+              <p>Dissertação de mestrado em estética, defendida na Universidade de São Petersburgo.</p>
+              <h4>Contexto</h4>
+              <p>
+                Publicada no início da carreira de Chernyshevsky como
+                crítico, a tese rompeu com a ideia então dominante de que a
+                arte pertencia a um domínio transcendente e independente
+                da vida real.
+              </p>
+              <h4>Principais temas</h4>
+              <p>
+                A arte como reflexo e explicação da realidade; a beleza
+                associada à vida concreta; a literatura como um "manual
+                da vida" a serviço da sociedade.
+              </p>
+              <h4>Sinopse</h4>
+              <p class="excerpt">
+                O ensaio lançou as bases do realismo utilitarista que
+                marcaria a crítica literária russa por décadas, influenciando
+                diretamente a forma como Chernyshevsky construiria, anos
+                depois, "O Que Fazer?".
+              </p>
+              <p class="close-hint">toque para fechar ↤</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="sources" style="margin-top:2rem;">
+        Nota: os trechos apresentados são sinopses e paráfrases, e não
+        transcrições literais das obras, para respeitar os direitos
+        associados a traduções específicas de cada texto.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-title">Entre Páginas e Nevadas</p>
+        <p class="foot-tag">Vozes da Literatura Russa</p>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="venevitinov.html">Dmitry Venevitinov</a></li>
+          <li><a href="chernyshevsky.html">Nikolai Chernyshevsky</a></li>
+          <li><a href="tradutoras.html">Tradutoras</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-bottom">Projeto desenvolvido por Ana Júlya, Ágatha e Kaique — Entre Páginas e Nevadas</p>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   ENTRE PÁGINAS E NEVADAS — script principal
+   ========================================================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---------- Menu hambúrguer (mobile) ---------- */
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('is-open');
+      hamburger.classList.toggle('is-open', open);
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('is-open');
+        hamburger.classList.remove('is-open');
+      });
+    });
+  }
+
+  /* ---------- Neve discreta ---------- */
+  const snowLayer = document.querySelector('.snowfall');
+  if (snowLayer && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const count = window.innerWidth < 600 ? 14 : 26;
+    for (let i = 0; i < count; i++) {
+      const flake = document.createElement('span');
+      const size = 3 + Math.random() * 4;
+      flake.style.left = Math.random() * 100 + 'vw';
+      flake.style.width = size + 'px';
+      flake.style.height = size + 'px';
+      flake.style.animationDuration = (10 + Math.random() * 14) + 's';
+      flake.style.animationDelay = (Math.random() * 12) + 's';
+      flake.style.opacity = (0.25 + Math.random() * 0.4).toFixed(2);
+      snowLayer.appendChild(flake);
+    }
+  }
+
+  /* ---------- Livro interativo (Home) ---------- */
+  const book = document.querySelector('.book');
+  if (book) {
+    const openTriggers = book.querySelectorAll('[data-open-leaf]');
+    const closeTriggers = book.querySelectorAll('[data-close-leaf]');
+    openTriggers.forEach(btn => {
+      btn.addEventListener('click', () => book.classList.add('flip-right'));
+    });
+    closeTriggers.forEach(btn => {
+      btn.addEventListener('click', () => book.classList.remove('flip-right'));
+    });
+  }
+
+  /* ---------- Cartões de obra (abrem como página de livro) ---------- */
+  document.querySelectorAll('.work-card').forEach(card => {
+    const toggle = () => card.classList.toggle('is-open');
+    card.addEventListener('click', (e) => {
+      // evita duplo toggle quando o clique já veio de dentro do próprio card
+      toggle();
+    });
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-pressed', 'false');
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+
+});
+
+</script>
+</body>
+</html>
